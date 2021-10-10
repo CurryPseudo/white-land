@@ -15,7 +15,7 @@ lazy_static! {
 pub(crate) fn spawn(
     mut commands: Commands,
     animations: Res<Assets<Animation>>,
-    mut sprite_sheet_animations: ResMut<Assets<benimator::SpriteSheetAnimation>>,
+    //mut sprite_sheet_animations: ResMut<Assets<benimator::SpriteSheetAnimation>>,
 ) {
     commands.spawn_bundle({
         let mut b = OrthographicCameraBundle::new_2d();
@@ -27,21 +27,20 @@ pub(crate) fn spawn(
     {
         let anim = iron_land_0;
         let texture_atlas = anim.atlas();
-        let anim: benimator::SpriteSheetAnimation = anim.into();
-        let anim_handle = sprite_sheet_animations.add(anim);
+        //let anim: benimator::SpriteSheetAnimation = anim.into();
+        //let anim_handle = sprite_sheet_animations.add(anim);
         for i in -30..30 {
             for j in -30..30 {
-                commands
-                    .spawn_bundle(SpriteSheetBundle {
-                        texture_atlas: texture_atlas.clone(),
-                        transform: Transform::from_translation(Vec3::from((
-                            i as f32 * *X_DIR + j as f32 * *Y_DIR,
-                            0.0,
-                        ))),
-                        ..Default::default()
-                    })
-                    .insert(anim_handle.clone())
-                    .insert(benimator::Play);
+                commands.spawn_bundle(SpriteSheetBundle {
+                    texture_atlas: texture_atlas.clone(),
+                    transform: Transform::from_translation(Vec3::from((
+                        i as f32 * *X_DIR + j as f32 * *Y_DIR,
+                        0.0,
+                    ))),
+                    ..Default::default()
+                });
+                //.insert(anim_handle.clone())
+                //.insert(benimator::Play);
             }
         }
     }

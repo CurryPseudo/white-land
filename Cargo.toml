@@ -11,3 +11,11 @@ bevy_ase = { git = "https://github.com/B-Reif/bevy_ase" , features = ["benimator
 benimator = "0.3.0"
 bevy_math = "0.5.0"
 lazy_static = "1.4"
+
+# Enable optimizations for dependencies (incl. Bevy), but not for our code:
+[profile.dev.package."*"]
+opt-level = 3
+
+# Maybe also enable only a small amount of optimization for our code:
+[profile.dev]
+opt-level = 1
