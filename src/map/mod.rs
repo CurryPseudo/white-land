@@ -29,8 +29,8 @@ pub(crate) fn spawn(
         let texture_atlas = anim.atlas();
         let anim: benimator::SpriteSheetAnimation = anim.into();
         let anim_handle = sprite_sheet_animations.add(anim);
-        for i in -3..3 {
-            for j in -3..3 {
+        for i in -30..30 {
+            for j in -30..30 {
                 commands
                     .spawn_bundle(SpriteSheetBundle {
                         texture_atlas: texture_atlas.clone(),

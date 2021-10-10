@@ -1,5 +1,5 @@
 use benimator::AnimationPlugin;
-use bevy::prelude::*;
+use bevy::{diagnostic::*, prelude::*};
 use bevy_ase::loader::AseLoaderDefaultPlugin;
 mod load;
 pub(crate) use load::AssetLoadStatus;
@@ -7,6 +7,8 @@ mod map;
 fn main() {
     App::build()
         .add_plugins(DefaultPlugins)
+        .add_plugin(FrameTimeDiagnosticsPlugin)
+        .add_plugin(LogDiagnosticsPlugin::default())
         .add_plugin(AseLoaderDefaultPlugin)
         .add_plugin(AnimationPlugin)
         .add_state(AssetLoadStatus(false))
